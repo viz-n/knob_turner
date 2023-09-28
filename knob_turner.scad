@@ -312,10 +312,13 @@ horn_holes();
 
 
 
- hollo_body();
+ // hollo_body();
 // knob();
 
 
 
-// render_handle();
+render_handle();
+render_body();
+render_motor_gear();
+render_face();
 
