@@ -65,6 +65,15 @@ module knob(){
 }
 
 
+module dovetail(tl=0){
+	translate([0,0,36])
+	hull(){
+
+		translate([0,0,5])
+		cube([5-tl,18,1],center=true);
+		cube([10-tl,25,1],center=true);
+	}
+}
 
 
 module render_face(){
@@ -76,6 +85,39 @@ module render_face(){
 			face();
 
 			knob();
+			dovetail();
+
+
+		}
+
+
+}
+
+
+module render_handle(){
+
+
+		union(){
+
+
+
+			rotate([0,0,90])
+			hull(){
+
+
+			translate([0,0,45])
+			cube([6,35,10],center = true);
+
+
+			translate([0,0,40])
+			cylinder(r=10,h=1);
+
+			}
+
+
+
+			dovetail(1);
+
 
 		}
 
@@ -110,18 +152,6 @@ module face() {
 
 	}
 
-    rotate([0, 0, 90])
-	hull(){
-
-
-	translate([0,0,40])
-	cube([6,35,10],center = true);
-
-
-	translate([0,0,35])
-	cylinder(r=10,h=1);
-
-	};
 
 
 	translate([0,0,10])
@@ -172,11 +202,12 @@ module cross_bar(){
 
 
 }
-module hollo_body(){
+module render_body(){
 
 	difference(){
 		body();
-		scale([0.9,0.9,1.1])
+		translate([0,0,5])
+		scale([0.9,0.9,1])
 		body();
 		SG90();
 		// scale(1.05)
@@ -257,7 +288,7 @@ module horn_holes(){
 // }
 	// cube([30,40,30]);
 
-module motor_gear(){
+module render_motor_gear(){
 
 
 difference(){
@@ -279,11 +310,12 @@ horn_holes();
 
 // horn_holes();
 
-// motor_gear();
-// SG90();
+
 
  hollo_body();
 // knob();
 
- render_face();
+
+
+// render_handle();
 
