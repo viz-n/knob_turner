@@ -34,6 +34,10 @@ module SG90(){
 
 	rotate([0,90,0])
 	cylinder(h=SG90_A,r=3);
+    
+    translate([SG90_A+1, 0, 0])
+    rotate([-90,0,-90])
+    import("horns/SG90_four_horns_with_holes.stl");
 	}
 }
 
@@ -218,11 +222,11 @@ horn_holes();
 }
 
 
-// motor_gear();
-// SG90();
+ motor_gear();
+ SG90();
 
-// hollo_body();
+//hollo_body();
 // knob();
 
-render_face();
+//render_face();
 
