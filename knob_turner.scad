@@ -110,7 +110,7 @@ module face() {
 
 	}
 
-
+    rotate([0, 0, 90])
 	hull(){
 
 
@@ -121,7 +121,7 @@ module face() {
 	translate([0,0,35])
 	cylinder(r=10,h=1);
 
-	}
+	};
 
 
 	translate([0,0,10])
@@ -279,11 +279,11 @@ horn_holes();
 
 // horn_holes();
 
- motor_gear();
- // SG90();
+// motor_gear();
+// SG90();
 
-// hollo_body();
+ hollo_body();
 // knob();
 
-// render_face();
+ render_face();
 
