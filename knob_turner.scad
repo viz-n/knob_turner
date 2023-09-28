@@ -15,7 +15,7 @@ SG90_F = 19.5;
 
 
 module SG90(){
-	translate([62,0,27])
+	translate([64,0,27])
 	rotate([0,0,180])
 	rotate([180,0,0])
 
@@ -34,13 +34,25 @@ module SG90(){
 
 	rotate([0,90,0])
 	cylinder(h=SG90_A,r=3);
+
+	translate([12,0,-5])
+	rotate([0,90,0])
+	cylinder(h=12,r=1);
     
-    translate([SG90_A+1, 0, 0])
-    rotate([-90,0,-90])
+
+	translate([12,0,22])
+	rotate([0,90,0])
+	cylinder(h=12,r=1);
+    
+    translate([SG90_A-4, 0, 0])
+    rotate([-90,0,90])
     import("horns/SG90_four_horns_with_holes.stl");
 	}
 }
 
+// SG90();
+
+    // import("horns/SG90_four_horns_with_holes.stl");
 
 
 
@@ -98,8 +110,22 @@ module face() {
 
 	}
 
+
+	hull(){
+
+
+	translate([0,0,40])
+	cube([6,35,10],center = true);
+
+
+	translate([0,0,35])
+	cylinder(r=10,h=1);
+
+	}
+
+
 	translate([0,0,10])
-	cylinder(r=10,h=15);
+	cylinder(r=10,h=25);
 
 
 	// translate([-15,0,10])
@@ -125,7 +151,7 @@ module body(){
 	color("orange")
 	hull(){
 
-	translate([44,-30,3])
+	translate([48,-30,3])
 	cube([1,60,35]);
 
 
@@ -152,8 +178,8 @@ module hollo_body(){
 		body();
 		scale([0.9,0.9,1.1])
 		body();
-		// scale(1.05)
 		SG90();
+		// scale(1.05)
 		knob();
 	}
 
@@ -171,7 +197,7 @@ module hollo_body(){
 		
 	difference(){
 		cross_bar();
-		scale(1.05)
+		scale(1.08)
 		face();
 
 	}
@@ -185,21 +211,51 @@ module hollo_body(){
 
 
 module horn_holes(){
-	translate([20,0,27])
+    translate([SG90_A-10, 0, 27])
+	rotate([90,0,0])
 	rotate([0,90,0])
 	{
-		for(i = [0:6]){
-			translate([4*cos(i*60),4*sin(i*60),0])
-			cylinder(r=1,h=20);
+		for(i = [0:4]){
+			translate([4.9*cos(i*90),4.6*sin(i*90),0])
+			cylinder(r=0.6,h=20);
 		}
-		for(i = [0:6]){
-			translate([6*cos(30+i*60),6*sin(30+i*60),0])
-			cylinder(r=1.2,h=20);
+		for(i = [0:4]){
+			translate([6.9*cos(i*90),6.6*sin(i*90),0])
+			cylinder(r=0.6,h=20);
 		}
+		// for()
+		for(i = [0:2]){
+			translate([6.9*cos(i*90*2+90),8.6*sin(i*90*2+90),0])
+			cylinder(r=0.6,h=20);
+		}
+		// for(i = [0:2]){
+		// 	translate([6.9*cos(i*90*2+90),10.6*sin(i*90*2+90),0])
+		// 	cylinder(r=0.6,h=20);
+		// }
+
+		// for(i = [0:2]){
+		// 	translate([6.9*cos(i*90*2+90),12.6*sin(i*90*2+90),0])
+		// 	cylinder(r=0.6,h=20);
+		// }
+
 	}
+    // translate([SG90_A-4, 0, 0])
+    // rotate([-90,0,90])
+
+
 }
 
+
 // horn_holes();
+
+// intersection(){
+
+	// cube([30,40,30],center=true);
+    // import("horns/SG90_four_horns_with_holes.stl");
+    // scale(1.1)
+    // import("horns/SG90_four_horns_without_holes.stl");
+// }
+	// cube([30,40,30]);
 
 module motor_gear(){
 
@@ -221,12 +277,13 @@ horn_holes();
 
 }
 
+// horn_holes();
 
  motor_gear();
- SG90();
+ // SG90();
 
-//hollo_body();
+// hollo_body();
 // knob();
 
-//render_face();
+// render_face();
 
